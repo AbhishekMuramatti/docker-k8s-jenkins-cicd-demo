@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "flask-app:latest"
+        IMAGE_NAME = "abhishekmuramatti/flask-app:latest"
     }
 
     stages {
@@ -13,15 +13,15 @@ pipeline {
             }
         }
 
-        stage('Deploy to Kubernetes') {
+        stage('Push to DockerHub') {
             steps {
-                bat 'kubectl apply -f k8s/deployment.yaml'
+                bat 'docker push %IMAGE_NAME%'
             }
         }
 
-        stage('Restart Pods') {
+        stage('Deploy to Kubernetes') {
             steps {
-                bat 'kubectl delete pod --all'
+                bat 'kubectl apply -f k8s/deployment.yaml'
             }
         }
     }
