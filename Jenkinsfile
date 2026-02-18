@@ -9,19 +9,19 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t %IMAGE_NAME% .'
+                sh 'docker build -t $IMAGE_NAME .'
             }
         }
 
         stage('Push to DockerHub') {
             steps {
-                bat 'docker push %IMAGE_NAME%'
+                sh 'docker push $IMAGE_NAME'
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
-                bat 'kubectl apply -f k8s/deployment.yaml'
+                sh 'kubectl apply -f k8s/deployment.yaml'
             }
         }
     }
