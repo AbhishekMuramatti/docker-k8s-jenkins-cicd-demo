@@ -47,12 +47,14 @@ https://hub.docker.com/r/abhishekmuramatti/flask-app
 ## 🚀 How to Run Locally
 
 ### 1️⃣ Start Minikube
-
-
-kubectl apply -f k8s/deployment.yaml
-kubectl apply -f k8s/service.yaml
-
-minikube service flask-service --url
-
 ```bash
 minikube start
+
+2️⃣ Apply Kubernetes Manifests
+ kubectl apply -f k8s/deployment.yaml
+ kubectl apply -f k8s/service.yaml
+
+3️⃣ Access Service
+minikube service flask-service --url
+
+
