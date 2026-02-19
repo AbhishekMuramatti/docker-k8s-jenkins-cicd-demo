@@ -50,11 +50,11 @@ https://hub.docker.com/r/abhishekmuramatti/flask-app
 ```bash
 minikube start
 
-2️⃣ Apply Kubernetes Manifests
+Apply Kubernetes Manifests
  kubectl apply -f k8s/deployment.yaml
  kubectl apply -f k8s/service.yaml
 
-3️⃣ Access Service
+Access Service
 minikube service flask-service --url
 
 
